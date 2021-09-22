@@ -10,23 +10,27 @@ void main(List<String> arguments) {
 }
 
 
-/*abstract*/ class Parent{
-  void a(){
+abstract class Parent{
+  void a();
+  void b() {
   }
 }
 
 class Child extends Parent{
   @override
   void a(){
-
   }
 }
-
+//implements需要实现Parent所有方法，包括b()
 class ChildImpl implements Parent{
   @override
   void a() {
-
   }
+
+  @override
+  void b() {
+  }
+
 }
 
 class Test{

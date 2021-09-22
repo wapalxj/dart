@@ -7,6 +7,7 @@ void main(List<String> arguments) {
 
   print('p.y===${p.y}');
   print('p.x===${p.getMyX}');
+  print('p.z===${p.z}');
   print('p.z===${p.getMyZ}');
 
   var pFromMap = Point.fromMap(null);
@@ -27,5 +28,15 @@ void main(List<String> arguments) {
   print('ip2==ip4:${ip2 == ip4}'); //true
 
   //单例
-  var holder=new Holder();
+  var holder;
+  holder=Holder.get();
+  holder=Holder.get2();
+  holder=Holder.instance;
+  //方式4：factory+const构造
+  holder=new Holder();
+
+  print('===========操作符重载===========');
+  print('p+p2==${p+p2}');
+  print('p-p2==${p-100}');
+
 }

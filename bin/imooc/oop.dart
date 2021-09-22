@@ -12,13 +12,14 @@ class Student extends Person {
   //可选参数+默认参数
   Student(String name, int? age, this._school, {this.city = "city", this.country = "china"})
       : name = "$country.$city",
-        //初始化列表:只能在直接构造器中设置
+        //初始化列表:不能在this重定向构造函数
         super(name, age) {
     print("构造方法体不是必须的");
   }
 
   //命名构造方法
-  Student.X(String name, int? age) : this(name, age, "school");
+  //初始化列表:不能在this重定向构造函数
+  Student.X(String name, int? age) : /*name = "这里报错",*/ this(name, age, "school");
 
   //命名工厂构造方法
   //不需要将类的final变量作为参数

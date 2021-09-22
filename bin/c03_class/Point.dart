@@ -1,3 +1,4 @@
+// class _Point {//私有类
 class Point {
   //_开头，为私有属性,相当于private
   int? _x;
@@ -7,7 +8,9 @@ class Point {
   //构造
   // Point();//dart没有方法重载
   //dart没有方法重载
-  Point([this._x, this.y]);
+  //编译报错：私有属性不能作为可选命名构造参数
+  // Point({this._x=0, this.y});
+  Point([this._x=0, this.y]);
 
   //命名构造方法
   Point.X(this._x);
@@ -16,20 +19,18 @@ class Point {
 
   //参数初始化列表
   //初始化属性x和y
-  Point.XY()
-      : _x = 1,
-        y = 2 {}
+  Point.XY(): _x = 1, y = 2 {}
 
   //参数初始化列表
   //初始化属性x和y
-  Point.fromMap(Map? map)
-      : _x = map?['x'],
-        y = map?['y'] {}
+  Point.fromMap(Map? map): _x = map?['x'], y = map?['y'] {}
 
   //set get
-  //公有的成员自带get
+  //公有的成员自带get/set
   //自定义get/set只能在私有变量上
-  int get getMyZ{
+  int get z => _z ?? 0;
+
+  int get getMyZ {
     return _z ?? 0;
   }
 
@@ -54,6 +55,11 @@ class Point {
   String operator -(int i) {
     return "verooooo point";
   }
+
+  @override
+  String toString() {
+    return 'Point($_x,$y)';
+  }
 }
 
 class View {
@@ -73,7 +79,7 @@ class ImmutablePoint {
   final int x;
   final int y;
 
-  //常量构造方法：参数若是成员变量，则成员变量必须是const/final
+  //常量构造方法：参数若是成员变量，则成员变量必须是final
   const ImmutablePoint(this.x, this.y);
 }
 
@@ -81,6 +87,7 @@ class Manager {
   int i=0;
 
   static Manager get2(){
+    // this.i;//错误
     return new Manager();
   }
 
@@ -88,6 +95,7 @@ class Manager {
   //这里使用命名构造方法作为工厂构造方法
   //工厂构造方法:必须返回当前类实例
   factory Manager.get() {
+    // this.i;//错误
     return new Manager();
   }
   //默认构造
