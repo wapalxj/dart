@@ -3,8 +3,7 @@ void main(List<String> arguments) {
   var cc = CC();
   c.a();
   c.b();
-
-
+  c.d();
 }
 
 //简写
@@ -13,11 +12,18 @@ class CC =Object with A,B;
 //混合，类似于多继承
 //如果A，B有重名的方法,优先级：1.自身  2.从with最右边查找,这里是B
 //继承优先级：with最右边的
-class C with A, B {
+// class C with A, B {}
+class C extends Object with A, B, D {
   @override
   void b() {
-    print('C.b()');
     super.b();
+    print('C.b()');
+  }
+}
+
+abstract class D{
+  void d() {
+    print('D.d()');
   }
 }
 
