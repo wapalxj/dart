@@ -2,9 +2,12 @@ import 'dart:io';
 import 'dart:isolate';
 
 void main(List<String> arguments) {
-  Isolate.spawn(entryPoint33, "");
-  Isolate.spawn(entryPoint44, "");
-  print("readFile() 00000");
+  // Isolate.spawn(entryPoint33, "");
+  // Isolate.spawn(entryPoint44, "");
+
+  Isolate.spawn(entryPoint55, "");
+  Isolate.spawn(entryPoint66, "");
+  print('main-----');
 
   while(true);
 }
@@ -41,3 +44,28 @@ void entryPoint44(String msg) {
     print('entryPoint44');
   }
 }
+
+
+
+//子isolate,类似子线程
+void entryPoint55(String msg) {
+  print('entryPoint====555555555');
+  sleep(Duration(seconds: 1));
+  Future.doWhile(() {
+    sleep(Duration(seconds: 3));
+    print('entryPoint55');
+    return true;
+  });
+}
+
+//子isolate,类似子线程
+void entryPoint66(String msg) {
+  print('entryPoint====6666666666');
+  sleep(Duration(seconds: 1));
+  Future.doWhile(() {
+    sleep(Duration(seconds: 3));
+    print('entryPoint66');
+    return true;
+  });
+}
+
