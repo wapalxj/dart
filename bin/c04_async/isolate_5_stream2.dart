@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 void main(List<String> arguments) {
-  // testBroadcastStream();
+  testBroadcastStream();
   // test2();
-  test3();
+  // test3();
 }
 
 void test3() {
