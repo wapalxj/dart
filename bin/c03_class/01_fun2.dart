@@ -19,5 +19,10 @@ void fun2({int? i, int? j=20}) {
   print('fun2() $i === $j');
 }
 
+//可选命名参数required: 不设置默认值
+void fun3({required int i, int? j=20}) {
+  print('fun3() $i === $j');
+}
+
 
 
