@@ -3,6 +3,17 @@ void main(List<String> arguments) {
   var zone=2;//用于测试的目标时区
   var today=todayTimeRangeSecond(zone);
   print('最终转换===${toZoneDateTime2(today.first,zone)}-----${toZoneDateTime2(today.second,zone)}');
+
+  print('================');
+  var now = DateTime.now();
+  var day1 = DateTime(now.year, now.month, now.day - now.weekday + 1, 0, 0, 0);
+  var mon1 = DateTime(now.year, now.month, 1, 0, 0, 0);
+  var lastMon = DateTime(now.year, now.month-1, 1, 0, 0, 0);
+
+  print('今天星期===${now.weekday}');
+  print('计算星期1===${day1.weekday}====$day1');
+  print('计算mon1=======$mon1');
+  print('计算lastMon=======$lastMon');
 }
 
 //计算today的时间
